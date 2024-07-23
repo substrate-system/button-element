@@ -4,72 +4,57 @@ const debug = createDebug()
 // for docuement.querySelector
 declare global {
     interface HTMLElementTagNameMap {
-        'example-element': Example
+        'button-element': ButtonElement
     }
 }
 
-export class Example extends HTMLElement {
-    constructor () {
-        super()
-
-        this.innerHTML = `<div>
-            <p>example</p>
-            <ul>
-                ${Array.from(this.children).filter(Boolean).map(node => {
-                    return `<li>${node.outerHTML}</li>`
-                }).join('')}
-            </ul>
-        </div>`
-    }
+export class ButtonElement extends HTMLElement {
+    // constructor () {
+    //     super()
+    // }
 
     // Define the attributes to observe
     // need this for `attributeChangedCallback`
-    static observedAttributes = ['exmaple']
+    // static observedAttributes = ['exmaple']
 
-    /**
-     * Handle [example] attribute changes
-     *
-     * @param  {string} oldValue The old attribute value
-     * @param  {string} newValue The new attribute value
-     */
-    handleChange_example (oldValue:string, newValue:string) {
-        debug('handling example change', oldValue, newValue)
+    // /**
+    //  * Handle [example] attribute changes
+    //  *
+    //  * @param  {string} oldValue The old attribute value
+    //  * @param  {string} newValue The new attribute value
+    //  */
+    // handleChange_example (oldValue:string, newValue:string) {
+    //     debug('handling example change', oldValue, newValue)
 
-        if (newValue === null) {
-            // [example] was removed
-        } else {
-            // set [example] attribute
-        }
-    }
+    //     if (newValue === null) {
+    //         // [example] was removed
+    //     } else {
+    //         // set [example] attribute
+    //     }
+    // }
 
-    /**
-     * Runs when the value of an attribute is changed on the component
-     * @param  {string} name     The attribute name
-     * @param  {string} oldValue The old attribute value
-     * @param  {string} newValue The new attribute value
-     */
-    attributeChangedCallback (name:string, oldValue:string, newValue:string) {
-        this[`handleChange_${name}`](oldValue, newValue)
-        debug('an attribute changed', name)
-    }
+    // /**
+    //  * Runs when the value of an attribute is changed on the component
+    //  * @param  {string} name     The attribute name
+    //  * @param  {string} oldValue The old attribute value
+    //  * @param  {string} newValue The new attribute value
+    //  */
+    // attributeChangedCallback (name:string, oldValue:string, newValue:string) {
+    //     this[`handleChange_${name}`](oldValue, newValue)
+    //     debug('an attribute changed', name)
+    // }
 
     disconnectedCallback () {
         debug('disconnected')
     }
 
     connectedCallback () {
-        debug('connected')
-
-        const observer = new MutationObserver(function (mutations) {
-            mutations.forEach((mutation) => {
-                if (mutation.addedNodes.length) {
-                    debug('Node added: ', mutation.addedNodes)
-                }
-            })
-        })
-
-        observer.observe(this, { childList: true })
+        this.innerHTML = `<button>
+            ${Array.from(this.childNodes).map(el => {
+                return el.textContent
+            })}
+        </button>`
     }
 }
 
-customElements.define('example-component', Example)
+customElements.define('button-element', ButtonElement)
