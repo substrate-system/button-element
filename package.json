@@ -1,8 +1,9 @@
 {
-  "name": "@nichoth/example-webcomponent",
+  "name": "@substrate-system/button-element",
+  "version": "0.0.0",
+  "description": "Button element with states for resolving, success, and error",
   "private": true,
   "type": "module",
-  "version": "0.0.0",
   "main": "dist/index.js",
   "files": [
     "./dist/*"
@@ -27,6 +28,25 @@
     "postversion": "git push --follow-tags && npm publish",
     "prepublishOnly": "npm run build"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./css": "./dist/style.css",
+    "./css/min": "./dist/style.min.css",
+    "./*": {
+      "import": [
+        "./dist/*.js",
+        "./dist/*"
+      ],
+      "require": [
+        "./dist/*.cjs",
+        "./dist/*"
+      ]
+    }
+  },
+  "dependencies": {},
   "devDependencies": {
     "@bicycle-codes/debug": "^0.6.13",
     "@bicycle-codes/dom": "^0.0.23",
@@ -50,22 +70,24 @@
     "typescript": "^5.4.5",
     "vite": "^5.2.11"
   },
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./*": {
-      "import": [
-        "./dist/*.js",
-        "./dist/*"
-      ],
-      "require": [
-        "./dist/*.cjs",
-        "./dist/*"
-      ]
-    }
-  },
   "author": "nichoth <nichoth@nichoth.com> (https://nichoth.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/substrate-system/button-element.git"
+  },
+  "keywords": [
+    "button",
+    "web",
+    "component",
+    "webcomponent"
+  ],
+  "bugs": {
+    "url": "https://github.com/substrate-system/button-element/issues"
+  },
+  "homepage": "https://github.com/substrate-system/button-element"
 }
