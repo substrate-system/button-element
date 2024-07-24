@@ -1,6 +1,6 @@
 {
   "name": "@substrate-system/button-element",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Button element with states for resolving, success, and error",
   "private": true,
   "type": "module",

@@ -15,7 +15,7 @@ A button component that can show resolving state.
 - [install](#install)
 - [API](#api)
   * [ESM](#esm)
-  * [Common JS](#common-js)
+  * [attributes](#attributes)
   * [Customize CSS via some variables](#customize-css-via-some-variables)
 - [use](#use)
   * [JS](#js)
