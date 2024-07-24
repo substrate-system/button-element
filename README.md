@@ -32,7 +32,7 @@ npm i -S @substrate-system/button-element
 
 ## API
 
-This exposes ESM and common JS via [package.json `exports` field](https://nodejs.org/api/packages.html#exports).
+This exposes ESM and common JS via [package.json `exports` field](https://nodejs.org/api/packages.html#exports). Just import, then use the tag in HTML.
 
 ### ESM
 ```js
@@ -42,12 +42,21 @@ import '@substrate-system/button-element/css'
 import '@substrate-system/button-element/css/min'
 ```
 
-### Common JS
+### attributes
+
+#### `spinning`
+Determines if the button content is a loading animation or not.
+
 ```js
-require('@substrate-system/button-element')
+const el = document.querySelector('button-element')
+el.setAttribute('spinning', '')
+setTimeout(() => {
+  el.removeAttribute('spinning')
+}, 2000)
 ```
 
-### attributes
+#### `href`
+If you pass `href`, then this will render an `a` tag instead of a `button`.
 
 ### Customize CSS via some variables
 
