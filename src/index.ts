@@ -1,3 +1,4 @@
+import { Signal, effect } from '@preact/signals'
 import { createDebug } from '@bicycle-codes/debug'
 const debug = createDebug()
 
@@ -8,7 +9,13 @@ declare global {
     }
 }
 
+export type RequestSignal = Signal<boolean|'pending'|null>
+
 export class ButtonElement extends HTMLElement {
+    _request?:RequestSignal
+    _dispose?:()=>any
+    _text?:string
+
     // constructor () {
     //     super()
     // }
@@ -44,17 +51,67 @@ export class ButtonElement extends HTMLElement {
     //     debug('an attribute changed', name)
     // }
 
-    disconnectedCallback () {
-        debug('disconnected')
+    // disconnectedCallback () {
+    //     debug('disconnected')
+    // }
+
+    set request (req:RequestSignal) {
+        this._request = req
+        this._dispose = effect(() => {
+            debug('request changing state', req.value)
+
+            if (req.value === 'pending') {
+                this.querySelector('.button')?.classList.add('spinning')
+            }
+
+            if (req.value === true) {
+                // show checkmark
+                const btn = this.querySelector('.button')!
+                btn.classList.remove('spinning')
+                btn.classList.add('success')
+
+                setTimeout(() => {
+                    btn.classList.remove('success')
+                }, 2000)
+            }
+
+            if (req.value === false) {
+                // error
+            }
+        })
+    }
+
+    get request ():boolean|'pending'|null {
+        return this._request?.value ?? null
     }
 
     connectedCallback () {
-        this.innerHTML = `<button>
-            ${Array.from(this.childNodes).map(el => {
-                return el.textContent
-            })}
+        debug('connected', this.innerHTML)
+
+        this._text = this.textContent ?? undefined
+        // const classes = ([
+        //     'button',
+        // ]).filter(Boolean).join(' ')
+
+        this.innerHTML = `<button class="button">
+            <span class="button-content">
+                ${this.textContent}
+            </span>
         </button>`
     }
 }
 
 customElements.define('button-element', ButtonElement)
+
+function svg () {
+    return `
+        <svg 
+            class="progress-indicator__check"
+            focusable="false" 
+            viewBox="0 0 20 20" 
+            fill="none"
+        >
+            <path d="m8.335 12.643 7.66-7.66 1.179 1.178L8.334 15 3.032 9.697 4.21 8.518l4.125 4.125Z" fill="currentColor"/>
+        </svg>
+    `
+}

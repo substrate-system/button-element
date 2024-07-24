@@ -1,3 +1,73 @@
-example-component {
-    background-color: red;
+@keyframes spinner {
+    to { transform: rotate(360deg); }
+}
+
+button-element {
+    & .button {
+        font-size: 1rem;
+        background-color: transparent;
+        min-width: 7rem;
+        width: fit-content;
+        border: 2px solid var(--ss-button-border-color, black);
+        border-radius: var(--ss-button-radius, 4px);
+        outline: 3px solid transparent;
+        padding: 14px 24px;
+        text-decoration: none;
+        transition: all .2s;
+
+        &.success {
+            & .button-content {
+                visibility: hidden;
+            }
+
+            &::after {
+                content: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' class='progress-indicator__check' focusable='false' viewBox='0 0 20 20' fill='none' %3E%3Cpath d='m8.335 12.643 7.66-7.66 1.179 1.178L8.334 15 3.032 9.697 4.21 8.518l4.125 4.125Z' fill='currentColor'/%3E%3C/svg%3E");
+                position: relative;
+                width: 2rem;
+                height: 1rem;
+                display: block;
+                bottom: 17px;
+                left: 14px;
+            }
+        }
+
+
+        &:hover {
+            outline: 3px solid var(--ss-button-border-color, black);
+        }
+
+        &:disabled {
+            border: 2px solid rgba(0 0 0 .4);
+            cursor: not-allowed;
+            opacity: .6;
+        }
+
+        &.spinning {
+            opacity: 0.6;
+            position: relative;
+    
+            .button-content {
+                visibility: hidden;
+            }
+    
+            &:hover {
+                cursor: initial;
+            }
+    
+            &::after {
+                content: "";
+                background: transparent;
+                box-sizing: border-box;
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                inset: 0;
+                margin: auto;
+                border-radius: 50%;
+                border-top: 2px solid black;
+                border-right: 2px solid transparent;
+                animation: spinner 0.6s linear infinite;
+            }
+        }
+    }
 }

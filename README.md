@@ -39,7 +39,7 @@ require('@substrate-system/button-element')
 
 ```css
 button-element {
-    --example: pink;
+    --ss-button-radius: 4px;
 }
 ```
 
