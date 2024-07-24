@@ -48,6 +48,7 @@ export class ButtonElement extends HTMLElement {
         // if href, then render a link
         const href = this.getAttribute('href')
         const tag = href ? 'a' : 'button'
+        this.removeAttribute('href')
 
         this.innerHTML = `<${tag}${href ? ` href=${href} ` : ''}
             class="${classes}"

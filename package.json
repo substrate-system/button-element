@@ -1,8 +1,7 @@
 {
   "name": "@substrate-system/button-element",
   "version": "0.0.1",
-  "description": "Button element with states for resolving, success, and error",
-  "private": true,
+  "description": "Button element with loading state",
   "type": "module",
   "main": "dist/index.js",
   "files": [
