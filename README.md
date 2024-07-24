@@ -12,6 +12,18 @@ A button component with resolving, success, and error states.
 
 <!-- toc -->
 
+- [install](#install)
+- [API](#api)
+  * [ESM](#esm)
+  * [Common JS](#common-js)
+  * [Customize CSS via some variables](#customize-css-via-some-variables)
+- [use](#use)
+  * [JS](#js)
+  * [HTML](#html)
+  * [pre-built](#pre-built)
+
+<!-- tocstop -->
+
 ## install
 
 ```sh
@@ -35,11 +47,14 @@ import '@substrate-system/button-element/css/min'
 require('@substrate-system/button-element')
 ```
 
+### attributes
+
 ### Customize CSS via some variables
 
 ```css
 button-element {
     --ss-button-radius: 4px;
+    --ss-button-border-color: black;
 }
 ```
 
@@ -50,7 +65,6 @@ the tag in your HTML.
 ### JS
 ```ts
 import '@substrate-system/button-element'
-import type { requestSignal } from '@substrate-system/button-element'
 import '@substrate-system/button-element/css'
 // or minified
 import '@substrate-system/button-element/css/min'

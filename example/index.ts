@@ -1,30 +1,33 @@
-import { signal } from '@preact/signals'
 import '../src/index.css'
-import Debug from '@bicycle-codes/debug'
-import type { RequestSignal } from '../src/index.js'
 import '../src/index.js'
 import './index.css'
+import Debug from '@bicycle-codes/debug'
 const debug = Debug()
 
-// @ts-expect-error dev
-window.signal = signal
-
 document.body.innerHTML += `
-    <button-element class="tester">hello</button-element>
+    <button-element class="tester" title="title example">
+        hello
+    </button-element>
+    <p>this button will spin for 2 seconds</p>
+
+    <hr />
+    <p>
+        this is a link, actually
+    </p>
+    <button-element href="#example">
+        a link that looks like a button
+    </button-element>
 `
 
 // @ts-expect-error dev
 const el = window.el = document.querySelector('button-element')!
 
-const request:RequestSignal = signal(null)
-el.request = request
-
 el?.addEventListener('click', async ev => {
     ev.preventDefault()
     debug('click')
-    request.value = 'pending'
+    el.setAttribute('spinning', '')
     await sleep(2000)
-    request.value = true
+    el.removeAttribute('spinning')
 })
 
 function sleep (ms:number) {

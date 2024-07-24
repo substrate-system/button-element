@@ -3,6 +3,12 @@
 }
 
 button-element {
+    &.link {
+        & a {
+            color: initial;
+        }
+    }
+
     & .button {
         font-size: 1rem;
         background-color: transparent;

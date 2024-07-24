@@ -1,3 +1,15 @@
+body {
+    font-family: sans-serif;
+}
+
+hr {
+    margin: 2rem 0;
+}
+
 button {
     cursor: pointer;
+}
+
+p {
+    margin-bottom: 2rem;
 }
