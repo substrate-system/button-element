@@ -1,14 +1,12 @@
 import { test } from '@bicycle-codes/tapzero'
-import { waitFor } from '@bicycle-codes/dom'
 import '../src/index.js'
 
 test('example', async t => {
     document.body.innerHTML += `
-        <example-component class="test">
-        </example-component>
+        <button-element class="test">
+        </button-element>
     `
 
-    const el = await waitFor('example-component')
-
-    t.ok(el, 'should find an element')
+    const el = document.querySelector('button-element.test button')
+    t.ok(el, 'should find a button inside the `button-element`')
 })
