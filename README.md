@@ -48,8 +48,9 @@ This calls the global function `customElements.define`. Just import, then use
 the tag in your HTML.
 
 ### JS
-```js
+```ts
 import '@substrate-system/button-element'
+import type { requestSignal } from '@substrate-system/button-element'
 import '@substrate-system/button-element/css'
 // or minified
 import '@substrate-system/button-element/css/min'
