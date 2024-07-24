@@ -20,7 +20,7 @@ document.body.innerHTML += `
 `
 
 // @ts-expect-error dev
-const el = window.el = document.querySelector('button-element')!
+const el = window.el = document.querySelector('button-element.tester')!
 
 el?.addEventListener('click', async ev => {
     ev.preventDefault()
