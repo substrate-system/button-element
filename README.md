@@ -6,7 +6,7 @@
 [![semantic versioning](https://img.shields.io/badge/semver-2.0.0-blue?logo=semver&style=flat-square)](https://semver.org/)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-A button component with resolving, success, and error states.
+A button component that can show resolving state.
 
 [See a live demo](https://substrate-system.github.io/button-element/)
 
@@ -82,7 +82,7 @@ import '@substrate-system/button-element/css/min'
 ### HTML
 ```html
 <div>
-    <button-element></button-element>
+    <button-element>click here</button-element>
 </div>
 ```
 
