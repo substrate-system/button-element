@@ -83,7 +83,6 @@
     "vite": "^5.3.4"
   },
   "author": "nichoth <nichoth@nichoth.com> (https://nichoth.com)",
-  "license": "MIT",
   "directories": {
     "example": "example",
     "test": "test"
@@ -101,5 +100,6 @@
   "bugs": {
     "url": "https://github.com/substrate-system/button-element/issues"
   },
-  "homepage": "https://github.com/substrate-system/button-element"
+  "homepage": "https://github.com/substrate-system/button-element",
+  "license": "MIT"
 }
