@@ -16,6 +16,7 @@ There are two possible styles; import either `button-one` or `button-two`.
 
 - [install](#install)
 - [API](#api)
+  * [exports](#exports)
   * [ESM](#esm)
   * [attributes](#attributes)
   * [Customize CSS via some variables](#customize-css-via-some-variables)

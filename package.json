@@ -1,6 +1,6 @@
 {
   "name": "@substrate-system/button-element",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Button element with loading state",
   "type": "module",
   "main": "dist/index.js",
