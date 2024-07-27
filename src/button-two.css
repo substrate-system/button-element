@@ -1,12 +1,3 @@
-:root {
-    --ss-button-color: #36393d;
-    --ss-button-bgc: transparent;
-    --ss-button-disabled-color: #999da0;
-    --ss-button-background-disabled: #f7f7f5; 
-    --ss-button-background-focus: #f7f7f5;
-    --ss-button-bgc-hover: #e6e6e6;
-}
-
 button-two {
     display: inline-block;
     user-select: none;
@@ -40,7 +31,8 @@ button-two {
         padding: 0.8rem 1rem;
         position: relative;
         background-color: var(--ss-button-bgc, transparent);
-        transition: background 0.3s ease, color 0.3s ease;
+        transition: background-color var(--ss-transition, 0.2s) ease,
+            color var(--ss-transition, 0.2s) ease;
         box-shadow: 0 1px 2px #00000054;
         appearance: none;
 
@@ -53,7 +45,7 @@ button-two {
 
         &:disabled {
             color: var(--ss-button-disabled-color, #999da0);
-            background-color: var(--ss-button-background-disabled, #f7f7f5);
+            background-color: var(--ss-button-bgc-disabled, #f7f7f5);
         }
 
         &:disabled, &:active {
@@ -63,7 +55,7 @@ button-two {
         }
 
         &:focus {
-            background-color: var(--ss-button-background-focus, #f7f7f5);
+            background-color: var(--ss-button-bgc-focus, #f7f7f5);
             outline: none;
         }
 
@@ -85,7 +77,7 @@ button-two {
                 border-radius: 50%;
                 border-top-color: transparent;
                 animation: spin 1s linear 0s infinite;
-                transition: opacity 0.3s ease;
+                transition: opacity var(--ss-transition, 0.2s) ease;
             }
         }
 

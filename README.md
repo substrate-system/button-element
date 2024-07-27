@@ -74,12 +74,22 @@ setTimeout(() => {
 #### `href`
 If you pass `href`, then this will render an `a` tag instead of a `button`.
 
-### Customize CSS via some variables
+### Customize CSS variables
 
 ```css
-button-element {
-    --ss-button-radius: 4px;
+button-two {
+    --ss-transition: 0.2s;
+    --ss-button-color: #36393d;
+    --ss-button-disabled-color: #999da0;
+    --ss-button-bgc: transparent;
+    --ss-button-bgc-disabled: #f7f7f5; 
+    --ss-button-bgc-focus: #f7f7f5;
+    --ss-button-bgc-hover: #e6e6e6;
+}
+
+button-one {
     --ss-button-border-color: black;
+    --ss-button-radius: 4px;
 }
 ```
 
@@ -91,14 +101,18 @@ the tag in your HTML.
 ```ts
 import '@substrate-system/button-element'
 import '@substrate-system/button-element/css'
+import '@substrate-system/button-element/button-two'
+import '@substrate-system/button-element/button-two/css'
 // or minified
 import '@substrate-system/button-element/css/min'
+import '@substrate-system/button-element/button-two/css/min'
 ```
 
 ### HTML
 ```html
 <div>
     <button-element>click here</button-element>
+    <button-two>click here</button-two>
 </div>
 ```
 
@@ -108,17 +122,23 @@ accessible to your web server, then link to them in HTML.
 
 #### copy
 ```sh
-cp ./node_modules/@substrate-system/package/dist/index.min.js ./public/button-element.min.js
-cp ./node_modules/@substrate-system/button-element/dist/style.min.css ./public/button-element.css
+# button one
+cp ./node_modules/@substrate-system/package/dist/button-one.min.js ./public/
+cp ./node_modules/@substrate-system/button-element/dist/button-one.min.css ./public/
+# button two
+cp ./node_modules/@substrate-system/package/dist/button-two.min.js ./public/
+cp ./node_modules/@substrate-system/button-element/dist/button-two.min.css ./public/
 ```
 
 #### HTML
 ```html
 <head>
-    <link rel="stylesheet" href="./button-element.css">
+    <link rel="stylesheet" href="./button-one.min.css">
+    <link rel="stylesheet" href="./button-two.min.css">
 </head>
 <body>
     <!-- ... -->
-    <script type="module" src="./button-element.min.js"></script>
+    <script type="module" src="./button-one.min.js"></script>
+    <script type="module" src="./button-two.min.js"></script>
 </body>
 ```

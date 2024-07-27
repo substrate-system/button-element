@@ -57,6 +57,9 @@
       ]
     }
   },
+  "dependencies": {
+    "@substrate-system/util": "^0.1.6"
+  },
   "devDependencies": {
     "@bicycle-codes/debug": "^0.6.13",
     "@bicycle-codes/tapzero": "^0.10.0",
@@ -98,8 +101,5 @@
   "bugs": {
     "url": "https://github.com/substrate-system/button-element/issues"
   },
-  "homepage": "https://github.com/substrate-system/button-element",
-  "dependencies": {
-    "@substrate-system/util": "^0.1.6"
-  }
+  "homepage": "https://github.com/substrate-system/button-element"
 }
