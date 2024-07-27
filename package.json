@@ -12,8 +12,8 @@
     "build-tests": "esbuild test/index.ts --target=es2020 --bundle --keep-names > test/test-bundle.js",
     "test": "npm run lint && npm run build && npm run build-tests && npm run test-tape-run",
     "test-tape-run": "cat test/index.html | tape-run --input=html --static=test | tap-spec",
-    "build-css": "postcss src/index.css --use postcss-nesting > dist/style.css",
-    "build-css:min": "postcss src/index.css --use cssnano postcss-nesting > dist/style.min.css",
+    "build-css": "postcss src/*.css --use postcss-nesting --dir dist",
+    "build-css:min": "postcss src/*.css --use cssnano postcss-nesting --dir dist --ext .min.css",
     "build-cjs": "esbuild src/*.ts --format=cjs --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --out-extension:.js=.cjs --sourcemap",
     "build-esm": "esbuild src/*.ts --format=esm --metafile=dist/meta.json --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --sourcemap && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
     "build-esm:min": "esbuild ./src/*.ts --format=esm --keep-names --bundle --tsconfig=tsconfig.build.json --minify --out-extension:.js=.min.js --outdir=./dist --sourcemap",
@@ -29,11 +29,23 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/button-one.js",
+      "require": "./dist/button-one.cjs"
     },
-    "./css": "./dist/style.css",
-    "./css/min": "./dist/style.min.css",
+    "./css": "./dist/button-one.css",
+    "./css/min": "./dist/button-one.min.css",
+    "./button-one": {
+      "import": "./dist/button-one.js",
+      "require": "./dist/button-one.cjs"
+    },
+    "./button-one/css": "./dist/button-one.css",
+    "./button-one/css/min": "./dist/button-one.min.css",
+    "./button-two": {
+      "import": "./dist/button-two.js",
+      "require": "./dist/button-two.cjs"
+    },
+    "./button-two/css": "./dist/button-two.css",
+    "./button-two/css/min": "./dist/button-two.min.css",
     "./*": {
       "import": [
         "./dist/*.js",
@@ -45,10 +57,10 @@
       ]
     }
   },
-  "dependencies": {},
   "devDependencies": {
     "@bicycle-codes/debug": "^0.6.13",
     "@bicycle-codes/tapzero": "^0.10.0",
+    "@bicycle-codes/tonic": "^15.5.1",
     "@typescript-eslint/eslint-plugin": "^7.9.0",
     "@typescript-eslint/parser": "^7.9.0",
     "auto-changelog": "^2.4.0",
@@ -87,5 +99,8 @@
   "bugs": {
     "url": "https://github.com/substrate-system/button-element/issues"
   },
-  "homepage": "https://github.com/substrate-system/button-element"
+  "homepage": "https://github.com/substrate-system/button-element",
+  "dependencies": {
+    "@substrate-system/util": "^0.1.6"
+  }
 }

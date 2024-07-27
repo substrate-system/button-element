@@ -1,5 +1,12 @@
 body {
+    display: flex;
+    justify-content: space-around;
     font-family: sans-serif;
+
+    & > div {
+        border: 2px solid;
+        padding: 4rem;
+    }
 }
 
 hr {

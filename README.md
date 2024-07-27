@@ -9,6 +9,8 @@
 
 A button component that can show resolving state.
 
+There are two possible styles; import either `button-one` or `button-two`.
+
 [See a live demo](https://substrate-system.github.io/button-element/)
 
 <!-- toc -->
@@ -35,12 +37,25 @@ npm i -S @substrate-system/button-element
 
 This exposes ESM and common JS via [package.json `exports` field](https://nodejs.org/api/packages.html#exports). Just import, then use the tag in HTML.
 
+### exports
+Either `button-one` or `button-two`. The default is `button-one`.
+
 ### ESM
+
+#### button-one
 ```js
 import '@substrate-system/button-element'
 import '@substrate-system/button-element/css'
 // or minified
 import '@substrate-system/button-element/css/min'
+```
+
+#### button-two
+```js
+import '@substrate-system/button-element/button-two'
+import '@substrate-system/button-element/button-two/css'
+// or minified
+import '@substrate-system/button-element/button-two/css/min'
 ```
 
 ### attributes

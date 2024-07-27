@@ -1,3 +1,5 @@
+import { attributesToString } from '@substrate-system/util'
+
 // for docuement.querySelector
 declare global {
     interface HTMLElementTagNameMap {
@@ -6,7 +8,7 @@ declare global {
 }
 
 export class ButtonElement extends HTMLElement {
-    static observedAttributes = ['spinning']
+    static observedAttributes = ['spinning', 'disabled']
 
     /**
      * Runs when the value of an attribute is changed on the component
@@ -16,6 +18,14 @@ export class ButtonElement extends HTMLElement {
      */
     attributeChangedCallback (name:string, oldValue:string, newValue:string) {
         this[`handleChange_${name}`](oldValue, newValue)
+    }
+
+    handleChange_disabled (_, newValue) {
+        if (newValue !== null) {
+            this.querySelector('button')?.setAttribute('disabled', '')
+        } else {
+            this.querySelector('button')?.removeAttribute('disabled')
+        }
     }
 
     /**
@@ -52,6 +62,7 @@ export class ButtonElement extends HTMLElement {
 
         this.innerHTML = `<${tag}${href ? ` href=${href} ` : ''}
             class="${classes}"
+            ${attributesToString(Array.from(this.attributes))}
         >
             <span class="button-content">
                 ${this.textContent}

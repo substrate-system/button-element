@@ -1,0 +1,220 @@
+:root {
+    --ss-button-color: #36393d;
+    --ss-button-bgc: transparent;
+    --ss-button-disabled-color: #999da0;
+    --ss-button-background-disabled: #f7f7f5; 
+    --ss-button-background-focus: #f7f7f5;
+    --ss-button-bgc-hover: #e6e6e6;
+}
+
+button-two {
+    display: inline-block;
+    user-select: none;
+
+    &[type="icon"] {
+        & button  {
+            background: none;
+            box-shadow: none;
+        }
+
+        & ss-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    &[disabled],
+    &[disabled] button {
+        user-select: none;
+        background-color: transparent
+    }
+
+    & .button {
+        font-size: 0.8rem;
+        color: var(--ss-button-color, #36393d);
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 0.5rem 1rem;
+        position: relative;
+        background-color: var(--ss-button-gc, transparent);
+        transition: background 0.3s ease, color 0.3s ease;
+        box-shadow: 0 1px 2px #00000054;
+        appearance: none;
+
+        &::before {
+            content: '';
+            width: 14px;
+            height: 14px;
+            opacity: 0;
+        }
+
+        &:disabled {
+            color: var(--ss-button-disabled-color, #999da0);
+            background-color: var(--ss-button-background-disabled, #f7f7f5);
+        }
+
+        &:disabled, &:active {
+            animation-duration: .2s;
+            animation-name: button-two-activate;
+            transition-timing-function: ease;
+        }
+
+        &:focus {
+            background-color: var(--ss-button-background-focus, #f7f7f5);
+            outline: none;
+        }
+
+        &.spinning {
+            pointer-events: none;
+            color: transparent !important;
+            transition: all 0.3s ease-in;
+
+            &::before {
+                margin-top: -8px;
+                margin-left: -8px;
+                display: inline-block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                opacity: 1;
+                transform: translateX(-50%) translateY(-50%);
+                border: 2px solid var(--tonic-button-text, var(--tonic-primary, black));
+                border-radius: 50%;
+                border-top-color: transparent;
+                animation: spin 1s linear 0s infinite;
+                transition: opacity 0.3s ease;
+            }
+        }
+
+        &:not([disabled]):hover {
+            background-color: var(--ss-button-bgc-hover, #e6e6e6) !important;
+            cursor: pointer;
+        }
+
+        button-two button:not([disabled]):hover,
+        button-two:not(.spinning) button:hover {
+            background-color: var(--tonic-button-background-hover, #36393d) !important;
+            cursor: pointer;
+        }
+
+    }
+}
+
+@keyframes button-two-activate {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* tonic-button {
+    display: inline-block;
+    user-select: none;
+
+    & button {
+        color: var(--tonic-button-text, var(--tonic-primary, #36393d));
+        width: auto;
+        font: 12px var(--tonic-subheader, 'Arial', sans-serif);
+        font-weight: bold;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 6px;
+        position: relative;
+        background-color: var(--tonic-button-background, transparent);
+        transition: background 0.3s ease, color 0.3s ease;
+        box-shadow: 0 1px 2px var(--tonic-button-shadow);
+        appearance: none;
+
+        &:disabled {
+            color: var(--tonic-medium, #999da0);
+            background-color: var(--tonic-button-background-disabled, #f7f7f5);
+        }
+
+        &:disabled, &:active {
+            animation-duration: .2s;
+            animation-name: button-two-activate;
+            transition-timing-function: ease;
+        }
+    }
+}
+
+tonic-button[type="icon"] button {
+    background: none;
+    box-shadow: none;
+}
+
+tonic-button[type="icon"] tonic-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+tonic-button button:focus {
+    background-color: var(--tonic-button-background-focus, #f7f7f5);
+    outline: none;
+}
+
+tonic-button button[disabled],
+tonic-button button:active {
+    animation-duration: .2s;
+    animation-name: tonic--button--activate;
+    transition-timing-function: ease;
+}
+
+
+tonic-button.tonic--loading {
+    pointer-events: none;
+}
+
+tonic-button[disabled="true"],
+tonic-button button[disabled],
+tonic-button[disabled="true"] button {
+    user-select: none;
+    background-color: transparent
+}
+
+tonic-button.tonic--loading button {
+    color: transparent !important;
+    transition: all 0.3s ease-in;
+    pointer-events: none;
+}
+
+tonic-button button::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    opacity: 0;
+}
+
+tonic-button button:not([disabled]):hover,
+tonic-button:not(.tonic--loading) button:hover {
+    background-color: var(--tonic-button-background-hover, #36393d) !important;
+    cursor: pointer;
+}
+
+tonic-button.tonic--loading button:hover {
+    color: transparent !important;
+    background: var(--tonic-medium, #999da0) !important;
+}
+ */
