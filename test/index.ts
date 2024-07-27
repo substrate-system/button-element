@@ -1,5 +1,5 @@
 import { test } from '@bicycle-codes/tapzero'
-import '../src/index.js'
+import '../src/button-one.js'
 
 test('button element', t => {
     document.body.innerHTML += `

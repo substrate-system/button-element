@@ -38,7 +38,7 @@ npm i -S @substrate-system/button-element
 This exposes ESM and common JS via [package.json `exports` field](https://nodejs.org/api/packages.html#exports). Just import, then use the tag in HTML.
 
 ### exports
-Either `button-one` or `button-two`. The default is `button-one`.
+Either `button-one` or `button-two`. The default is `button-one`. They both do the same things, just with different styles.
 
 ### ESM
 
