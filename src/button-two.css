@@ -33,12 +33,13 @@ button-two {
 
     & .button {
         font-size: 0.8rem;
+        letter-spacing: 0.05em;
         color: var(--ss-button-color, #36393d);
         font-weight: bold;
         text-transform: uppercase;
-        padding: 0.5rem 1rem;
+        padding: 0.8rem 1rem;
         position: relative;
-        background-color: var(--ss-button-gc, transparent);
+        background-color: var(--ss-button-bgc, transparent);
         transition: background 0.3s ease, color 0.3s ease;
         box-shadow: 0 1px 2px #00000054;
         appearance: none;
@@ -80,7 +81,7 @@ button-two {
                 left: 50%;
                 opacity: 1;
                 transform: translateX(-50%) translateY(-50%);
-                border: 2px solid var(--tonic-button-text, var(--tonic-primary, black));
+                border: 2px solid var(--ss-button-color, #36393d);
                 border-radius: 50%;
                 border-top-color: transparent;
                 animation: spin 1s linear 0s infinite;
@@ -95,7 +96,7 @@ button-two {
 
         button-two button:not([disabled]):hover,
         button-two:not(.spinning) button:hover {
-            background-color: var(--tonic-button-background-hover, #36393d) !important;
+            background-color: var(--ss-button-bgc, #36393d) !important;
             cursor: pointer;
         }
 
@@ -125,96 +126,3 @@ button-two {
         transform: rotate(360deg);
     }
 }
-
-/* tonic-button {
-    display: inline-block;
-    user-select: none;
-
-    & button {
-        color: var(--tonic-button-text, var(--tonic-primary, #36393d));
-        width: auto;
-        font: 12px var(--tonic-subheader, 'Arial', sans-serif);
-        font-weight: bold;
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        padding: 6px;
-        position: relative;
-        background-color: var(--tonic-button-background, transparent);
-        transition: background 0.3s ease, color 0.3s ease;
-        box-shadow: 0 1px 2px var(--tonic-button-shadow);
-        appearance: none;
-
-        &:disabled {
-            color: var(--tonic-medium, #999da0);
-            background-color: var(--tonic-button-background-disabled, #f7f7f5);
-        }
-
-        &:disabled, &:active {
-            animation-duration: .2s;
-            animation-name: button-two-activate;
-            transition-timing-function: ease;
-        }
-    }
-}
-
-tonic-button[type="icon"] button {
-    background: none;
-    box-shadow: none;
-}
-
-tonic-button[type="icon"] tonic-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-tonic-button button:focus {
-    background-color: var(--tonic-button-background-focus, #f7f7f5);
-    outline: none;
-}
-
-tonic-button button[disabled],
-tonic-button button:active {
-    animation-duration: .2s;
-    animation-name: tonic--button--activate;
-    transition-timing-function: ease;
-}
-
-
-tonic-button.tonic--loading {
-    pointer-events: none;
-}
-
-tonic-button[disabled="true"],
-tonic-button button[disabled],
-tonic-button[disabled="true"] button {
-    user-select: none;
-    background-color: transparent
-}
-
-tonic-button.tonic--loading button {
-    color: transparent !important;
-    transition: all 0.3s ease-in;
-    pointer-events: none;
-}
-
-tonic-button button::before {
-    content: '';
-    width: 14px;
-    height: 14px;
-    opacity: 0;
-}
-
-tonic-button button:not([disabled]):hover,
-tonic-button:not(.tonic--loading) button:hover {
-    background-color: var(--tonic-button-background-hover, #36393d) !important;
-    cursor: pointer;
-}
-
-tonic-button.tonic--loading button:hover {
-    color: transparent !important;
-    background: var(--tonic-medium, #999da0) !important;
-}
- */

@@ -23,7 +23,7 @@ document.body.innerHTML += `
     </div>
 
     <div class="two">
-        <button-two>
+        <button-two class="tester">
             hello two
         </button-two>
     </div>
@@ -45,7 +45,7 @@ el2?.addEventListener('click', async ev => {
     ev.preventDefault()
     debug('click two')
     el2.setAttribute('spinning', '')
-    await sleep(2000)
+    await sleep(2500)
     el2.removeAttribute('spinning')
 })
 
