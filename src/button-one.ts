@@ -1,14 +1,51 @@
 import { attributesToString } from '@substrate-system/util'
+import Debug from '@bicycle-codes/debug'
+const debug = Debug()
 
 // for docuement.querySelector
 declare global {
     interface HTMLElementTagNameMap {
-        'button-element': ButtonElement
+        'button-one': ButtonOne
     }
 }
 
-export class ButtonElement extends HTMLElement {
+export class ButtonOne extends HTMLElement {
     static observedAttributes = ['spinning', 'disabled']
+
+    constructor () {
+        super()
+
+        const classes = ([
+            'button',
+            this.hasAttribute('spinning') ? 'spinning' : null
+        ]).filter(Boolean).join(' ')
+
+        if (this.hasAttribute('spinning')) this.classList.add('spinning')
+        if (this.hasAttribute('href')) this.classList.add('link')
+
+        // if href, then render a link
+        const href = this.getAttribute('href')
+        const tag = href ? 'a' : 'button'
+        debug('tag', tag)
+        debug('href', href)
+        this.removeAttribute('href')
+
+        this.innerHTML = `<${tag}${href ? ` href=${href} ` : ''}
+            class="${classes}"
+            ${attributesToString(Array.from(this.attributes))}
+        >
+            <span class="button-content">
+                ${this.textContent}
+            </span>
+        </${tag}>`
+
+        this.querySelector('button')?.addEventListener('click', ev => {
+            if (this.hasAttribute('disabled')) {
+                ev.preventDefault()
+                ev.stopPropagation()
+            }
+        })
+    }
 
     /**
      * Runs when the value of an attribute is changed on the component
@@ -42,33 +79,6 @@ export class ButtonElement extends HTMLElement {
             this.classList.add('spinning')
         }
     }
-
-    connectedCallback () {
-        if (this.hasAttribute('href')) {
-            this.classList.add('link')
-        }
-
-        const classes = ([
-            'button',
-            this.hasAttribute('spinning') ? 'spinning' : null
-        ]).filter(Boolean).join(' ')
-
-        if (this.hasAttribute('spinning')) this.classList.add('spinning')
-
-        // if href, then render a link
-        const href = this.getAttribute('href')
-        const tag = href ? 'a' : 'button'
-        this.removeAttribute('href')
-
-        this.innerHTML = `<${tag}${href ? ` href=${href} ` : ''}
-            class="${classes}"
-            ${attributesToString(Array.from(this.attributes))}
-        >
-            <span class="button-content">
-                ${this.textContent}
-            </span>
-        </${tag}>`
-    }
 }
 
-customElements.define('button-element', ButtonElement)
+customElements.define('button-one', ButtonOne)

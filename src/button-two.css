@@ -19,7 +19,8 @@ button-two {
     &[disabled],
     &[disabled] button {
         user-select: none;
-        background-color: transparent
+        background-color: transparent;
+        cursor: not-allowed;
     }
 
     & .button {

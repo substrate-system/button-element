@@ -10,48 +10,9 @@ declare global {
 export class ButtonTwo extends HTMLElement {
     static observedAttributes = ['spinning', 'disabled']
 
-    spinning (spin:boolean) {
-        if (spin) {
-            this.classList.add('spinning')
-        } else {
-            this.classList.remove('spinning')
-        }
-    }
+    constructor () {
+        super()
 
-    /**
-     * Runs when the value of an attribute is changed on the component
-     * @param  {string} name     The attribute name
-     * @param  {string} oldValue The old attribute value
-     * @param  {string} newValue The new attribute value
-     */
-    attributeChangedCallback (name:string, oldValue:string, newValue:string) {
-        this[`handleChange_${name}`](oldValue, newValue)
-    }
-
-    /**
-     * `null` means it is absent; empty string means it exists
-     */
-    handleChange_spinning (_, newValue) {
-        if (newValue === null) {
-            // remove class
-            this.querySelector('button')?.classList.remove('spinning')
-            this.classList.remove('spinning')
-        } else {
-            // add class
-            this.querySelector('button')?.classList.add('spinning')
-            this.classList.add('spinning')
-        }
-    }
-
-    handleChange_disabled (_, newValue) {
-        if (newValue !== null) {
-            this.querySelector('button')?.setAttribute('disabled', '')
-        } else {
-            this.querySelector('button')?.removeAttribute('disabled')
-        }
-    }
-
-    connectedCallback () {
         if (this.hasAttribute('href')) {
             this.classList.add('link')
         }
@@ -83,6 +44,48 @@ export class ButtonTwo extends HTMLElement {
                 ev.stopPropagation()
             }
         })
+    }
+
+    spinning (spin:boolean) {
+        if (spin) {
+            this.classList.add('spinning')
+        } else {
+            this.classList.remove('spinning')
+        }
+    }
+
+    /**
+     * Runs when the value of an attribute is changed on the component
+     *
+     * @param  {string} name     The attribute name
+     * @param  {string} oldValue The old attribute value
+     * @param  {string} newValue The new attribute value
+     */
+    attributeChangedCallback (name:string, oldValue:string, newValue:string) {
+        this[`handleChange_${name}`](oldValue, newValue)
+    }
+
+    /**
+     * `null` means it is absent; empty string means it exists
+     */
+    handleChange_spinning (_, newValue) {
+        if (newValue === null) {
+            // remove class
+            this.querySelector('button')?.classList.remove('spinning')
+            this.classList.remove('spinning')
+        } else {
+            // add class
+            this.querySelector('button')?.classList.add('spinning')
+            this.classList.add('spinning')
+        }
+    }
+
+    handleChange_disabled (_, newValue) {
+        if (newValue !== null) {
+            this.querySelector('button')?.setAttribute('disabled', '')
+        } else {
+            this.querySelector('button')?.removeAttribute('disabled')
+        }
     }
 }
 
