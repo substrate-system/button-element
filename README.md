@@ -19,7 +19,7 @@ There are two possible styles; import either `button-one` or `button-two`.
   * [exports](#exports)
   * [ESM](#esm)
   * [attributes](#attributes)
-  * [Customize CSS via some variables](#customize-css-via-some-variables)
+  * [Customize CSS variables](#customize-css-variables)
 - [use](#use)
   * [JS](#js)
   * [HTML](#html)
