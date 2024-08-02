@@ -8,29 +8,37 @@ const debug = Debug()
 
 document.body.innerHTML += `
     <div class="one">
-        <button-element class="tester" title="title example">
+        <button-one class="tester" title="title example">
             hello
-        </button-element>
+        </button-one>
         <p>this button will spin for 2 seconds</p>
 
         <hr />
         <p>
             this is a link, actually
         </p>
-        <button-element href="#example">
+        <button-one href="#example">
             a link that looks like a button
-        </button-element>
+        </button-one>
+
+        <hr />
+
+        <button-one disabled>Disabled button one</button-one>
     </div>
 
     <div class="two">
         <button-two class="tester">
             hello two
         </button-two>
+
+        <button-two class="disabled-example" disabled>
+            hello disabled
+        </button-two>
     </div>
 `
 
 // @ts-expect-error dev
-const el = window.el = document.querySelector('button-element.tester')!
+const el = window.el = document.querySelector('button-one.tester')!
 
 el?.addEventListener('click', async ev => {
     ev.preventDefault()
