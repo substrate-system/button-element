@@ -44,10 +44,10 @@ Either `button-one` or `button-two`. The default is `button-one`. They both do t
 
 #### button-one
 ```js
-import '@substrate-system/button-element'
-import '@substrate-system/button-element/css'
+import '@substrate-system/button-element/button-one'
+import '@substrate-system/button-element/button-one/css'
 // or minified
-import '@substrate-system/button-element/css/min'
+import '@substrate-system/button-element/button-one/css/min'
 ```
 
 #### button-two
