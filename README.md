@@ -64,7 +64,7 @@ import '@substrate-system/button-element/button-two/css/min'
 Determines if the button content is a loading animation or not.
 
 ```js
-const el = document.querySelector('button-element')
+const el = document.querySelector('button-one')
 el.setAttribute('spinning', '')
 setTimeout(() => {
   el.removeAttribute('spinning')
@@ -99,19 +99,19 @@ the tag in your HTML.
 
 ### JS
 ```ts
-import '@substrate-system/button-element'
-import '@substrate-system/button-element/css'
+import '@substrate-system/button-element/button-one'
+import '@substrate-system/button-element/button-one/css'
 import '@substrate-system/button-element/button-two'
 import '@substrate-system/button-element/button-two/css'
 // or minified
-import '@substrate-system/button-element/css/min'
+import '@substrate-system/button-element/button-one/css/min'
 import '@substrate-system/button-element/button-two/css/min'
 ```
 
 ### HTML
 ```html
 <div>
-    <button-element>click here</button-element>
+    <button-one>click here</button-one>
     <button-two>click here</button-two>
 </div>
 ```
