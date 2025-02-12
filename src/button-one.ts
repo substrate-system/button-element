@@ -47,6 +47,10 @@ export class ButtonOne extends HTMLElement {
         })
     }
 
+    connectedCallback () {
+
+    }
+
     /**
      * Runs when the value of an attribute is changed on the component
      * @param  {string} name     The attribute name
